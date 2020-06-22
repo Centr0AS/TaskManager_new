@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Настройки"
+        android:id="@+id/settings"/>
+    <item android:title="Мои финансы"
+        android:id="@+id/finances"/>
+
+    <group android:id="@+id/menu_items">
+        <item android:title="О программе"
+            android:id="@+id/about"/>
+    </group>
+
+
+</menu>
