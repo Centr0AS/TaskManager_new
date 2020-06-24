@@ -431,12 +431,13 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
         categories.add("Месяц")
         var i = 0
         Toast.makeText(this, tasks.size.toString(), Toast.LENGTH_SHORT).show()
-        while (i <= tasks.size - 1)
+        while (i <= tasks.size -1)
         {
             var checkedValue = tasks[i].category
             if (categories.contains(checkedValue))
             {
-                continue // Взаместо i++?
+//                continue // Взаместо i++?
+                i++
             }
             else {
                 categories.add(checkedValue)
