@@ -6,145 +6,189 @@
     android:layout_height="match_parent"
     tools:context=".TaskDetail">
 
-    <TextView
-        android:id="@+id/textVIew_Title"
+<!--    <TextView-->
+<!--        android:id="@+id/textVIew_Title"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Задача: "-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold" />-->
+
+    <ImageView
+        android:id="@+id/icon_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Задача: "
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:src="@drawable/ic_name"
+        android:layout_alignParentLeft="true"/>
+
 
     <TextView
         android:id="@+id/task_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="39dp"
-        android:layout_toRightOf="@+id/textVIew_Title"
+        android:layout_marginLeft="3dp"
+        android:layout_toRightOf="@+id/icon_name"
         android:text="Sample Task"
         android:textSize="28sp" />
     <View
+        android:id="@+id/view1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/darker_gray"
         android:layout_below="@id/task_name"/>
 
-    <TextView
-        android:id="@+id/textView_Nt"
+<!--    <TextView-->
+<!--        android:id="@+id/textView_Nt"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/textVIew_Title"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_marginLeft="0dp"-->
+<!--        android:layout_marginTop="37dp"-->
+<!--        android:text="Категория:"-->
+<!--        android:textSize="24sp" />-->
+
+    <ImageView
+        android:id="@+id/icon_cat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textVIew_Title"
+        android:src="@drawable/ic_category"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="37dp"
-        android:text="Категория:"
-        android:textSize="24sp" />
+        android:layout_below="@id/view1"/>
 
     <TextView
         android:id="@+id/textView_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView_Nt"
+        android:layout_below="@+id/icon_cat"
         android:layout_alignParentRight="true"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="3dp"
         android:layout_marginTop="-45dp"
         android:layout_marginRight="-15dp"
-        android:layout_toRightOf="@+id/textView_Nt"
+        android:layout_toRightOf="@+id/icon_cat"
         android:text="Sample Category"
         android:textSize="28sp" />
     <View
+        android:id="@+id/view2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/darker_gray"
         android:layout_below="@id/textView_category"/>
 
-    <TextView
-        android:id="@+id/textView_Dt"
+<!--    <TextView-->
+<!--        android:id="@+id/textView_Dt"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/textView_category"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_marginTop="41dp"-->
+<!--        android:text="Описание задачи:"-->
+<!--        android:textSize="18sp" />-->
+    <ImageView
+        android:id="@+id/ic_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView_category"
+        android:src="@drawable/ic_info"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="41dp"
-        android:text="Описание задачи:"
-        android:textSize="18sp" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray"
-        android:layout_below="@id/textView_description"/>
+        android:layout_below="@id/view2"/>
 
     <TextView
         android:id="@+id/textView_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView_Dt"
+        android:layout_below="@+id/ic_info"
         android:layout_alignParentRight="true"
-        android:layout_marginLeft="37dp"
-        android:layout_marginTop="-26dp"
-        android:layout_marginRight="-37dp"
-        android:layout_toRightOf="@+id/textView_Nt"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="-35dp"
+        android:layout_marginRight="203dp"
+        android:layout_toRightOf="@+id/ic_info"
         android:text="Sample Description"
         android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/textView_DateTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView_description"
-        android:layout_marginTop="41dp"
-        android:textSize="24sp"
-        android:text="Дата:"
-        android:layout_alignParentLeft="true"/>
-
     <View
+        android:id="@+id/view3"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/darker_gray"
-        android:layout_below="@id/textView_DateTitle"/>
+        android:layout_below="@id/textView_description"/>
+
+    <!--    <TextView-->
+<!--        android:id="@+id/textView_DateTitle"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/textView_description"-->
+<!--        android:layout_marginTop="41dp"-->
+<!--        android:textSize="24sp"-->
+<!--        android:text="Дата:"-->
+<!--        android:layout_alignParentLeft="true"/>-->
+
+    <ImageView
+        android:id="@+id/ic_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_calendar"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/view3"/>
+
+
 
     <TextView
         android:id="@+id/textView_Date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView_DateTitle"
+        android:layout_below="@+id/ic_date"
         android:layout_alignParentRight="true"
         android:layout_marginStart="7dp"
         android:layout_marginLeft="-54dp"
         android:layout_marginTop="-39dp"
         android:layout_marginRight="10dp"
-        android:layout_toEndOf="@+id/textView_DateTitle"
-        android:layout_toRightOf="@+id/textView_Nt"
+        android:layout_toEndOf="@+id/ic_date"
         android:text="Sample Date"
         android:textSize="28sp" />
-
-    <TextView
-        android:id="@+id/textView_Tt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView_DateTitle"
-        android:layout_marginTop="41dp"
-        android:textSize="24sp"
-        android:text="Время:"
-        android:layout_alignParentLeft="true" />
-
     <View
+        android:id="@+id/view4"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/darker_gray"
-        android:layout_below="@id/textView_Tt"/>
+        android:layout_below="@id/textView_Date"/>
+
+<!--    <TextView-->
+<!--        android:id="@+id/textView_Tt"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/textView_DateTitle"-->
+<!--        android:layout_marginTop="41dp"-->
+<!--        android:textSize="24sp"-->
+<!--        android:text="Время:"-->
+<!--        android:layout_alignParentLeft="true" />-->
+    <ImageView
+        android:id="@+id/ic_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_time"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/view4"/>
 
     <TextView
         android:id="@+id/textView_CTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView_Tt"
+        android:layout_below="@+id/ic_time"
         android:layout_alignParentRight="true"
-        android:layout_marginLeft="-36dp"
+        android:layout_marginLeft="3dp"
         android:layout_marginTop="-38dp"
         android:layout_marginRight="36dp"
-        android:layout_toRightOf="@+id/textView_Nt"
+        android:layout_toRightOf="@+id/ic_time"
         android:text="Sample Time"
         android:textSize="28sp" />
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_below="@id/textView_CTime"/>
+
 
     <Button
         android:id="@+id/exit_Button"

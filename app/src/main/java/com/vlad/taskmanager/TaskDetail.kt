@@ -2,6 +2,7 @@ package com.vlad.taskmanager
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_add_task.*
 import kotlinx.android.synthetic.main.activity_task_detail.*
 import kotlinx.android.synthetic.main.activity_task_detail.textView_Date
@@ -21,6 +22,10 @@ class TaskDetail : AppCompatActivity() {
         textView_description.text = qtask.description
         textView_Date.text = qtask.date
         textView_CTime.text = qtask.time
+
+        icon_name.setOnClickListener {
+            Toast.makeText(this, "Название задачи.",Toast.LENGTH_SHORT).show()
+        }
 
         exit_Button.setOnClickListener {
             finish()

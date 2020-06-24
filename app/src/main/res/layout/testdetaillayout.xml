@@ -1,6 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TaskDetail">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/textVIew_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Задача: "
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/task_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="39dp"
+        android:layout_toRightOf="@+id/textVIew_Title"
+        android:text="Sample Task"
+        android:textSize="28sp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_below="@id/task_name"/>
+
+    <TextView
+        android:id="@+id/textView_Nt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textVIew_Title"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="37dp"
+        android:text="Категория:"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textView_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_Nt"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="-45dp"
+        android:layout_marginRight="-15dp"
+        android:layout_toRightOf="@+id/textView_Nt"
+        android:text="Sample Category"
+        android:textSize="28sp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_below="@id/textView_category"/>
+
+    <TextView
+        android:id="@+id/textView_Dt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_category"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="41dp"
+        android:text="Описание задачи:"
+        android:textSize="18sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_below="@id/textView_description"/>
+
+    <TextView
+        android:id="@+id/textView_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_Dt"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="37dp"
+        android:layout_marginTop="-26dp"
+        android:layout_marginRight="-37dp"
+        android:layout_toRightOf="@+id/textView_Nt"
+        android:text="Sample Description"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView_DateTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_description"
+        android:layout_marginTop="41dp"
+        android:textSize="24sp"
+        android:text="Дата:"
+        android:layout_alignParentLeft="true"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_below="@id/textView_DateTitle"/>
+
+    <TextView
+        android:id="@+id/textView_Date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_DateTitle"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="7dp"
+        android:layout_marginLeft="-54dp"
+        android:layout_marginTop="-39dp"
+        android:layout_marginRight="10dp"
+        android:layout_toEndOf="@+id/textView_DateTitle"
+        android:layout_toRightOf="@+id/textView_Nt"
+        android:text="Sample Date"
+        android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/textView_Tt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_DateTitle"
+        android:layout_marginTop="41dp"
+        android:textSize="24sp"
+        android:text="Время:"
+        android:layout_alignParentLeft="true" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_below="@id/textView_Tt"/>
+
+    <TextView
+        android:id="@+id/textView_CTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_Tt"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="-36dp"
+        android:layout_marginTop="-38dp"
+        android:layout_marginRight="36dp"
+        android:layout_toRightOf="@+id/textView_Nt"
+        android:text="Sample Time"
+        android:textSize="28sp" />
+
+    <Button
+        android:id="@+id/exit_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:text="Закрыть" />
+
+
+</RelativeLayout>
