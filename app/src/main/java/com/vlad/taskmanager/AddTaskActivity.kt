@@ -41,7 +41,7 @@ class AddTaskActivity : AppCompatActivity() {
                 date = formate.format(selectedDate.time)
 
                 Toast.makeText(this, "Date:$date", Toast.LENGTH_SHORT).show()
-                textView_Date.text = date.toString()
+                textView_Date.text = "Дата: $date"
 
             },
             now.get(Calendar.YEAR), now.get(Calendar.MONTH), now.get(Calendar.DAY_OF_MONTH))
@@ -66,6 +66,18 @@ class AddTaskActivity : AppCompatActivity() {
             },
             now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), false)
             timePicker.show()
+        }
+
+        incDate_btn.setOnClickListener {
+            selectedDate.add(Calendar.DAY_OF_YEAR,+1)
+            date = formate.format(selectedDate.time)
+            textView_Date.text = "Дата: $date"
+        }
+
+        decDate_btn.setOnClickListener {
+            selectedDate.add(Calendar.DAY_OF_YEAR,-1)
+            date = formate.format(selectedDate.time)
+            textView_Date.text = "Дата: $date"
         }
 
         add_task_btn.setOnClickListener {

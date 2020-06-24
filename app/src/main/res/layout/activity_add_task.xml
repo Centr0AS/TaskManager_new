@@ -50,23 +50,45 @@
 
     <TextView
         android:id="@+id/textView_Date"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="date"
-        android:textSize="30sp"/>
+        android:textSize="30sp" />
 
-    <Button
-        android:id="@+id/select_date_btn"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Задать дату" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/decDate_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="-" />
+
+        <Button
+            android:id="@+id/select_date_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Задать дату" />
+
+        <Button
+            android:id="@+id/incDate_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="+" />
+
+
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/textView_Time"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Время не задано"
-        android:textSize="30sp"/>
+        android:textSize="30sp" />
 
     <Button
         android:id="@+id/select_time_btn"
@@ -79,4 +101,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Добавить задачу" />
+
+
 </LinearLayout>
