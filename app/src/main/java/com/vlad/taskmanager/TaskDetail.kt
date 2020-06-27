@@ -27,6 +27,13 @@ class TaskDetail : AppCompatActivity() {
             Toast.makeText(this, "Название задачи.",Toast.LENGTH_SHORT).show()
         }
 
+        icon_cat.setOnClickListener {
+            Toast.makeText(this, "Категория задачи.",Toast.LENGTH_SHORT).show()
+        }
+        ic_info.setOnClickListener {
+            Toast.makeText(this, "Название задачи.",Toast.LENGTH_SHORT).show()
+        }
+
         exit_Button.setOnClickListener {
             finish()
         }

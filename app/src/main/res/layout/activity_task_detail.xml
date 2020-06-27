@@ -19,23 +19,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_name"
-        android:layout_alignParentLeft="true"/>
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="5dp"/>
 
 
     <TextView
         android:id="@+id/task_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="3dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="5dp"
         android:layout_toRightOf="@+id/icon_name"
         android:text="Sample Task"
         android:textSize="28sp" />
+
     <View
         android:id="@+id/view1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/darker_gray"
-        android:layout_below="@id/task_name"/>
+        android:layout_below="@id/icon_name"/>
 
 <!--    <TextView-->
 <!--        android:id="@+id/textView_Nt"-->
@@ -73,7 +76,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/darker_gray"
-        android:layout_below="@id/textView_category"/>
+        android:layout_below="@id/icon_cat"/>
 
 <!--    <TextView-->
 <!--        android:id="@+id/textView_Dt"-->
@@ -97,18 +100,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ic_info"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="3dp"
         android:layout_marginTop="-35dp"
+        android:layout_marginEnd="0dp"
         android:layout_marginRight="203dp"
         android:layout_toRightOf="@+id/ic_info"
         android:text="Sample Description"
-        android:textSize="18sp" />
+        android:textSize="19sp" />
 
     <View
         android:id="@+id/view3"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginTop="7dp"
         android:background="@android:color/darker_gray"
         android:layout_below="@id/textView_description"/>
 
@@ -167,6 +173,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_time"
         android:layout_alignParentLeft="true"
+        android:layout_marginLeft="4dp"
         android:layout_below="@id/view4"/>
 
     <TextView
