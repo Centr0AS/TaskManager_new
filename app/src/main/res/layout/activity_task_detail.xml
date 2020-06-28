@@ -202,7 +202,8 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_edit"
         android:layout_above="@+id/exit_Button"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
         />
 
 
