@@ -3,14 +3,13 @@ package com.vlad.taskmanager
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
-import androidx.core.app.NotificationManagerCompat
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.core.content.getSystemService
+
 
 class Receiver : BroadcastReceiver() {
     lateinit var notificationManager : NotificationManager
@@ -23,6 +22,10 @@ class Receiver : BroadcastReceiver() {
 
 
     override fun onReceive(context: Context?, intent: Intent?) {
+
+        var i = Intent(context, MainActivity::class.java)
+        val resultPendingIntent = PendingIntent.getActivity(context, 0, i,
+            PendingIntent.FLAG_UPDATE_CURRENT)
 
         if (context != null) {
             notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -41,6 +44,8 @@ class Receiver : BroadcastReceiver() {
                 .setSmallIcon(R.drawable.ic_calendar)
                 .setContentTitle("Менеджер задач")
                 .setContentText("Задача ${nameOfTask} требует вашего внимания!")
+                .setContentIntent(resultPendingIntent)
+                .setAutoCancel(true)
 
         }
         else {

@@ -14,7 +14,7 @@ import java.util.*
 class AddTaskActivity : AppCompatActivity() {
 
     var formate = SimpleDateFormat("dd MMM, YYYY", Locale.getDefault())
-    val timeFormat = SimpleDateFormat("hh:mm a", Locale.getDefault())
+    val timeFormat = SimpleDateFormat("hh:mm", Locale.getDefault())
 
     lateinit var context: Context
     lateinit var alarmManager: AlarmManager
@@ -74,7 +74,7 @@ class AddTaskActivity : AppCompatActivity() {
                     ).show()
                     textView_Time.text = timeFormat.format(selectedTime.time)
                 },
-                now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), false
+                now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true
             )
             timePicker.show()
         }
@@ -105,16 +105,11 @@ class AddTaskActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
             } else {
-//                    val intent = Intent(context, Receiver::class.java)
-//                    val pendingIntent = PendingIntent.getBroadcast(context,0,intent, PendingIntent.FLAG_UPDATE_CURRENT)
-//                    alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), pendingIntent)
-
-
                 var taskName = editTextName.text.toString()
                 var category = editTextCategory.text.toString()
                 var description = editTextDescription.text.toString()
                 val time = selectedTime
-//            Toast.makeText(this, "time:" + timeFormat.format(selectedTime.time), Toast.LENGTH_SHORT).show()
+
                 taskName = taskName.trim()
                 category = category.trim()
                 description = description.trim()
@@ -138,7 +133,7 @@ class AddTaskActivity : AppCompatActivity() {
                 var i = Intent(applicationContext, Receiver::class.java)
 
                 i.putExtra("name", newTask.name)
-                sendBroadcast(i)
+
                 var pi = PendingIntent.getBroadcast(applicationContext, 111, i, 0)
                 var am: AlarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
                 // am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (sec * 1000), pi)
@@ -148,7 +143,7 @@ class AddTaskActivity : AppCompatActivity() {
 
                 am.set(AlarmManager.RTC_WAKEUP, howMany, pi)
 
-                Toast.makeText(applicationContext, "Alarm is set for $sec", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "Alarm is set for $howMany", Toast.LENGTH_LONG).show()
 
                 setResult(Activity.RESULT_OK, returnIntent)
                 finish()

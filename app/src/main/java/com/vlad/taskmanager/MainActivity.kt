@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
         taskAdapter.notifyDataSetChanged()
 
         categorySelector = findViewById<Spinner>(R.id.sp_option)
-         categories = makeCategoryList()
+        categories = makeCategoryList()
         categorySelector.adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, categories)
 
         categorySelector.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
@@ -96,7 +96,6 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
 
             override fun onItemSelected(
                 parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-//                Toast.makeText(this@MainActivity, "On Spinner Clicked$id",Toast.LENGTH_SHORT).show()
 
                 val currentDate = Calendar.getInstance()
                 var formate = SimpleDateFormat("dd MMM, YYYY", Locale.getDefault())
@@ -430,7 +429,7 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
         categories.add("Неделя")
         categories.add("Месяц")
         var i = 0
-        Toast.makeText(this, tasks.size.toString(), Toast.LENGTH_SHORT).show()
+
         while (i <= tasks.size -1)
         {
             var checkedValue = tasks[i].category
