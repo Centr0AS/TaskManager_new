@@ -18,26 +18,17 @@ class Receiver : BroadcastReceiver() {
     lateinit var builder : Notification.Builder
     private val channelID = "com.vlad.taskmanager"
     private val description = "Task reminder"
-
+    lateinit var messageNotify: String
+    lateinit var taskNameNotify: String
 
 
     override fun onReceive(context: Context?, intent: Intent?) {
 
-
-        //TODO: Notification
-//        val notification = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            Notification.Builder(context, "notifya")
-//                .setSmallIcon(R.drawable.ic_calendar)
-//                .setContentTitle("Task remind")
-//                .setContentText("This task needed your attention!")
-//
-//        } else {
-//            TODO("VERSION.SDK_INT < O")
-//        }
-//        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (context != null) {
             notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         }
+//        var notifiedTask = intent?.getSerializableExtra("name") as Task
+        val nameOfTask = intent?.getStringExtra("name")
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             notificationChannel = NotificationChannel(channelID, description, NotificationManager.IMPORTANCE_HIGH)
@@ -49,26 +40,16 @@ class Receiver : BroadcastReceiver() {
             builder = Notification.Builder(context, channelID)
                 .setSmallIcon(R.drawable.ic_calendar)
                 .setContentTitle("Менеджер задач")
-                .setContentText("Задача требует вашего внимания!")
+                .setContentText("Задача ${nameOfTask} требует вашего внимания!")
 
         }
         else {
             builder = Notification.Builder(context)
                 .setSmallIcon(R.drawable.ic_calendar)
                 .setContentTitle("Task remind")
-                .setContentText("This task needed your attention!")
+                .setContentText("This task is needed your attention!")
         }
         notificationManager.notify(1234,builder.build())
     }
 
-//    private fun createChannel() {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            val name = notify.id.toString() + "_action_edu"
-//            val import = NotificationManager.IMPORTANCE_DEFAULT
-//            val channel = NotificationChannel(name, name, import)
-//
-//            val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-//            notificationManager.createNotificationChannel(channel)
-//        }
-//    }
 }

@@ -134,29 +134,25 @@ class AddTaskActivity : AppCompatActivity() {
                 Toast.makeText(this, "Задача $taskName добавлена", Toast.LENGTH_SHORT).show()
 
                 var sec = 5
+
                 var i = Intent(applicationContext, Receiver::class.java)
 
+                i.putExtra("name", newTask.name)
+                sendBroadcast(i)
                 var pi = PendingIntent.getBroadcast(applicationContext, 111, i, 0)
-
                 var am: AlarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
                 // am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (sec * 1000), pi)
                 val df = SimpleDateFormat("yyyy.MM.dd")
-//                var mils:Long = df.parse(selectedDate).time
                 val howMany: Long =
                     (selectedDate.timeInMillis - System.currentTimeMillis()) + selectedTime.timeInMillis
-//                var amils:Long = newTask.date.toLong()
-//                var mils:Long = selectedDate.toLong()
+
                 am.set(AlarmManager.RTC_WAKEUP, howMany, pi)
 
-                Toast.makeText(applicationContext, "Alarm is set for $sec", Toast.LENGTH_LONG)
-//                    .show()
+                Toast.makeText(applicationContext, "Alarm is set for $sec", Toast.LENGTH_LONG).show()
 
                 setResult(Activity.RESULT_OK, returnIntent)
                 finish()
             }
         }
-
     }
-
-
 }
