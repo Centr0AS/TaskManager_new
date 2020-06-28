@@ -132,9 +132,9 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
                         val month = currentDate.get(Calendar.MONTH)
                         val daysinMounth = DateFuncs().getDaysinMonth(month)
 
-                        var weekDay = currentDate.get(Calendar.DAY_OF_WEEK)
-                        var currentDay = currentDate.get(Calendar.DAY_OF_MONTH)
-                        var minDate = DateFuncs().getFirstDayofWeek(weekDay, currentDay, daysinMounth)
+                        val weekDay = currentDate.get(Calendar.DAY_OF_WEEK)
+                        val currentDay = currentDate.get(Calendar.DAY_OF_MONTH)
+                        val minDate = DateFuncs().getFirstDayofWeek(weekDay, currentDay, daysinMounth)
 
                         formate = SimpleDateFormat("MMM", Locale.getDefault())
                         tempDate = formate.format(currentDate.time)
@@ -178,10 +178,10 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
                 if (selOption != 0)
                 {
 //                    var selectedTask = tasks.find { name -> sortedList[position].name.equals(tasks) }
-                    var poss = viewHolder.adapterPosition
+                    val poss = viewHolder.adapterPosition
 
-                    var selTask = sortedList[poss]
-                   var  selectedTask1 = tasks.indexOf(selTask)
+                    val selTask = sortedList[poss]
+                   val  selectedTask1 = tasks.indexOf(selTask)
 //                    taskAdapter = TaskAdapter(tasks, this@MainActivity)
 //                    rv_task_list.adapter = taskAdapter
                     tasks = (taskAdapter as TaskAdapter).removeItemC(viewHolder, selectedTask1, tasks,sortedList)
@@ -263,7 +263,7 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
     //Serialization Start
     private fun createJsonData()
     {
-        var json = JSONObject()
+        val json = JSONObject()
 //        var writeTask = tasks
         json.put("task", writeTasks(tasks))
         saveJson(json.toString() )
@@ -303,7 +303,7 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
     }
     private fun writeTasks (tasks: ArrayList<Task>): JSONArray {
 
-        var taskJson = JSONArray()
+        val taskJson = JSONArray()
 
         tasks.forEach{
             taskJson.put(
@@ -319,7 +319,6 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
     }
 
     //Serialization end.
-
 
     //Deserialization start (parse).
     private fun parseJson() {
@@ -386,10 +385,10 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
         val intent = Intent(this, TaskDetail::class.java)
         //TODO: Не работает показ дополнительных данных из категорий (fixed).
 
-        var selOption = categorySelector.selectedItemPosition
+        val selOption = categorySelector.selectedItemPosition
         if (selOption != 0)
         {
-            var selTask = sortedList[position]
+            val selTask = sortedList[position]
             intent.putExtra("name", selTask)
             startActivityForResult(intent,13)
         }
@@ -414,7 +413,7 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
                 taskAdapter.notifyDataSetChanged()
                 createJsonData()
             } else {
-                Toast.makeText(this, "Ошибка при добавлении задачи.", Toast.LENGTH_SHORT)
+                Toast.makeText(this, "Ошибка при добавлении задачи.", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -422,7 +421,6 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
         {
 
             if (data != null) {
-                Toast.makeText(this@MainActivity, "А результат реквеста то 13!.", Toast.LENGTH_LONG)
                 val editedTask: Task = data.getSerializableExtra("return_task") as Task
                 val oldName = data.getStringExtra("oldName")
 
@@ -447,7 +445,7 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
     }
 
     private fun makeCategoryList(): ArrayList<String> {
-        var categories = ArrayList<String>()
+        val categories = ArrayList<String>()
         categories.add("Все")
         categories.add("Сегодня")
         categories.add("Завтра")
@@ -457,7 +455,7 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
 
         while (i <= tasks.size -1)
         {
-            var checkedValue = tasks[i].category
+            val checkedValue = tasks[i].category
             if (categories.contains(checkedValue))
             {
 //                continue // Взаместо i++?
@@ -503,7 +501,7 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
             }
             3-> {
                 val correctValue = value.toInt()
-                var currentWeek = ArrayList<String>()
+                val currentWeek = ArrayList<String>()
                 for (i in 0..6)
                     currentWeek.add((correctValue + i).toString())
 
@@ -511,8 +509,8 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
                 var j = 0
                 var add = false
                 while (i < tasks.size) {
-                    var dateDay = tasks[i].date.toCharArray()
-                    var numberOfDay = dateDay[0].toString() + dateDay[1].toString()
+                    val dateDay = tasks[i].date.toCharArray()
+                    val numberOfDay = dateDay[0].toString() + dateDay[1].toString()
                     while (j <= 6) {
                         if (numberOfDay == (currentWeek[j]) &&
                             tasks[i].date.contains(currentMonth)) {

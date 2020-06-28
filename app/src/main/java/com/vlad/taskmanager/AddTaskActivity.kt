@@ -22,8 +22,8 @@ class AddTaskActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_task)
 
         val now = Calendar.getInstance()
-        var selectedTime = Calendar.getInstance()
-        var selectedDate = Calendar.getInstance()
+        val selectedTime = Calendar.getInstance()
+        val selectedDate = Calendar.getInstance()
         var date = formate.format(selectedDate.time)
 
         textView_Date.text = "Дата: " + formate.format(now.time)
@@ -118,10 +118,11 @@ class AddTaskActivity : AppCompatActivity() {
                 description = description.trim()
 
                 var setTime = timeFormat.format(selectedTime.time).toString()
-                if (textView_Time.text == "Время не задано")
+                if (textView_Time.text == "Время не задано") {
                     setTime = ""
+                }
 
-                var setDate = date.toString()
+                val setDate = date.toString()
 
                 val newTask: Task = Task(taskName, category, description, setDate, setTime)
                 Toast.makeText(
@@ -133,12 +134,12 @@ class AddTaskActivity : AppCompatActivity() {
                 returnIntent.putExtra("return_task", newTask)
                 Toast.makeText(this, "Задача $taskName добавлена", Toast.LENGTH_SHORT).show()
 
-                var i = Intent(applicationContext, Receiver::class.java)
+                val i = Intent(applicationContext, Receiver::class.java)
 
                 i.putExtra("name", newTask.name)
 
-                var pi = PendingIntent.getBroadcast(applicationContext, 111, i, 0)
-                var am: AlarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+                val pi = PendingIntent.getBroadcast(applicationContext, 111, i, 0)
+                val am: AlarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
                 val df = SimpleDateFormat("yyyy.MM.dd")
                 val howMany: Long =
                     (selectedDate.timeInMillis - System.currentTimeMillis()) + selectedTime.timeInMillis

@@ -12,9 +12,9 @@ import android.os.Build
 
 
 class Receiver : BroadcastReceiver() {
-    lateinit var notificationManager : NotificationManager
-    lateinit var notificationChannel : NotificationChannel
-    lateinit var builder : Notification.Builder
+    private lateinit var notificationManager : NotificationManager
+    private lateinit var notificationChannel : NotificationChannel
+    private lateinit var builder : Notification.Builder
     private val channelID = "com.vlad.taskmanager"
     private val description = "Task reminder"
 
@@ -41,7 +41,7 @@ class Receiver : BroadcastReceiver() {
             builder = Notification.Builder(context, channelID)
                 .setSmallIcon(R.drawable.ic_calendar)
                 .setContentTitle("Менеджер задач")
-                .setContentText("Задача ${nameOfTask} требует вашего внимания!")
+                .setContentText("Задача $nameOfTask требует вашего внимания!")
                 .setContentIntent(resultPendingIntent)
                 .setAutoCancel(true)
 

@@ -5,10 +5,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_add_task.*
 import kotlinx.android.synthetic.main.activity_task_detail.*
 import kotlinx.android.synthetic.main.activity_task_detail.textView_Date
-import kotlinx.android.synthetic.main.layout_list_item.*
 import kotlinx.android.synthetic.main.layout_list_item.task_name
 
 lateinit var oldName: String
@@ -62,7 +60,7 @@ class TaskDetail : AppCompatActivity() {
                 textView_description.text = returnedTask.description
                 textView_Date.text = returnedTask.date
                 textView_CTime.text = returnedTask.time
-                val returnIntent: Intent = Intent()
+                val returnIntent = Intent()
                 returnIntent.putExtra("return_task", returnedTask)
                 returnIntent.putExtra("oldName", oldName)
                 setResult(Activity.RESULT_OK, returnIntent)
