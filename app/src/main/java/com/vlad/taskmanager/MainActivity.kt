@@ -29,8 +29,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 import androidx.appcompat.widget.Toolbar
-import androidx.core.view.get
-import kotlinx.android.synthetic.main.activity_add_task.*
+
 
 class MainActivity : AppCompatActivity(), OnTaskClickListener {
 
@@ -256,6 +255,7 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
 
         addTask_button.setOnClickListener {
             val myIntent = Intent(this, AddTaskActivity::class.java)
+            myIntent.putExtra("isEdit", "0")
             startActivityForResult(myIntent, 12)
         }
     }

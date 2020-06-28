@@ -46,6 +46,7 @@ class TaskDetail : AppCompatActivity() {
         edit_button.setOnClickListener {
             val myIntent = Intent(this, AddTaskActivity::class.java)
             myIntent.putExtra("currentTask", qtask)
+            myIntent.putExtra("isEdit", "1")
             startActivityForResult(myIntent, 13)
         }
 
@@ -61,11 +62,9 @@ class TaskDetail : AppCompatActivity() {
                 textView_description.text = returnedTask.description
                 textView_Date.text = returnedTask.date
                 textView_CTime.text = returnedTask.time
-                //TODO: Изменение текущей задачи.
                 val returnIntent: Intent = Intent()
                 returnIntent.putExtra("return_task", returnedTask)
                 returnIntent.putExtra("oldName", oldName)
-
                 setResult(Activity.RESULT_OK, returnIntent)
 
             }

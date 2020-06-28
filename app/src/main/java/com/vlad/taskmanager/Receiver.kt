@@ -21,7 +21,7 @@ class Receiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
 
-        var i = Intent(context, MainActivity::class.java)
+        val i = Intent(context, MainActivity::class.java)
         val resultPendingIntent = PendingIntent.getActivity(context, 0, i,
             PendingIntent.FLAG_UPDATE_CURRENT)
 

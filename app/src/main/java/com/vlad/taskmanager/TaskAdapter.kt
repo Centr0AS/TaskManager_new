@@ -3,10 +3,8 @@ package com.vlad.taskmanager
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.SortedList
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.layout_list_item.view.*
-import java.io.File
 
 
 class TaskAdapter(private var tasks : ArrayList <Task>, private val onTaskClickListener: OnTaskClickListener) : RecyclerView.Adapter<TaskViewHolder>() {
@@ -25,7 +23,7 @@ class TaskAdapter(private var tasks : ArrayList <Task>, private val onTaskClickL
     }
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
-        var task = tasks[position]
+        val task = tasks[position]
 
         holder.itemView.task_name.text = task.name
         holder.itemView.task_category.text = "#" + task.category
@@ -55,7 +53,6 @@ class TaskAdapter(private var tasks : ArrayList <Task>, private val onTaskClickL
         removedPosition = position
         removedItem = tasks[position]
        val removedPositionS = viewHolder.adapterPosition
-        val removedItemS = tasks[viewHolder.adapterPosition]
 
         tasks.removeAt(position)
         sortedList.removeAt(viewHolder.adapterPosition)

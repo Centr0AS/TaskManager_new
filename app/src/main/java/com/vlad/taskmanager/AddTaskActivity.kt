@@ -28,10 +28,9 @@ class AddTaskActivity : AppCompatActivity() {
 
         textView_Date.text = "Дата: " + formate.format(now.time)
 
-        var qTask = intent.getSerializableExtra("currentTask") as Task
-
-        if (qTask != null)
-        {
+        var isEdit = intent.getStringExtra("isEdit")
+        if (isEdit.toInt() == 1) {
+            var qTask = intent.getSerializableExtra("currentTask") as Task
             editTextName.setText(qTask.name)
             editTextCategory.setText(qTask.category)
             editTextDescription.setText(qTask.description)
@@ -146,7 +145,8 @@ class AddTaskActivity : AppCompatActivity() {
 
                 am.set(AlarmManager.RTC_WAKEUP, howMany, pi)
 
-                Toast.makeText(applicationContext, "Alarm is set for $howMany", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "Alarm is set for $howMany", Toast.LENGTH_LONG)
+                    .show()
 
                 setResult(Activity.RESULT_OK, returnIntent)
                 finish()
