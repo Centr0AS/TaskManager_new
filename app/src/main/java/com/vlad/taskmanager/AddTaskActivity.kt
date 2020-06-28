@@ -114,8 +114,10 @@ class AddTaskActivity : AppCompatActivity() {
                 category = category.trim()
                 description = description.trim()
 
-
                 var setTime = timeFormat.format(selectedTime.time).toString()
+                if (textView_Time.text == "Время не задано")
+                    setTime = ""
+
                 var setDate = date.toString()
 
                 val newTask: Task = Task(taskName, category, description, setDate, setTime)
@@ -127,8 +129,6 @@ class AddTaskActivity : AppCompatActivity() {
                 val returnIntent: Intent = Intent()
                 returnIntent.putExtra("return_task", newTask)
                 Toast.makeText(this, "Задача $taskName добавлена", Toast.LENGTH_SHORT).show()
-
-                var sec = 5
 
                 var i = Intent(applicationContext, Receiver::class.java)
 
