@@ -68,7 +68,6 @@ class TaskDetail : AppCompatActivity() {
 
                 setResult(Activity.RESULT_OK, returnIntent)
 
-
             }
 
         }

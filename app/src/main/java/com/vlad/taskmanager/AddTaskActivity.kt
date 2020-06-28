@@ -28,6 +28,17 @@ class AddTaskActivity : AppCompatActivity() {
 
         textView_Date.text = "Дата: " + formate.format(now.time)
 
+        var qTask = intent.getSerializableExtra("currentTask") as Task
+
+        if (qTask != null)
+        {
+            editTextName.setText(qTask.name)
+            editTextCategory.setText(qTask.category)
+            editTextDescription.setText(qTask.description)
+            //TODO: Доделать чтобы дата и тайм тоже схватывался в поле.
+        }
+
+
         select_date_btn.setOnClickListener {
 
             val datePicker = DatePickerDialog(
