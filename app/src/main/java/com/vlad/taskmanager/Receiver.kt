@@ -17,8 +17,6 @@ class Receiver : BroadcastReceiver() {
     lateinit var builder : Notification.Builder
     private val channelID = "com.vlad.taskmanager"
     private val description = "Task reminder"
-    lateinit var messageNotify: String
-    lateinit var taskNameNotify: String
 
 
     override fun onReceive(context: Context?, intent: Intent?) {

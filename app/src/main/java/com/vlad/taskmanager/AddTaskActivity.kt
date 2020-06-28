@@ -16,9 +16,6 @@ class AddTaskActivity : AppCompatActivity() {
     var formate = SimpleDateFormat("dd MMM, YYYY", Locale.getDefault())
     val timeFormat = SimpleDateFormat("hh:mm", Locale.getDefault())
 
-    lateinit var context: Context
-    lateinit var alarmManager: AlarmManager
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,9 +27,6 @@ class AddTaskActivity : AppCompatActivity() {
         var date = formate.format(selectedDate.time)
 
         textView_Date.text = "Дата: " + formate.format(now.time)
-
-//        context = this
-//        alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
         select_date_btn.setOnClickListener {
 
@@ -108,7 +102,6 @@ class AddTaskActivity : AppCompatActivity() {
                 var taskName = editTextName.text.toString()
                 var category = editTextCategory.text.toString()
                 var description = editTextDescription.text.toString()
-                val time = selectedTime
 
                 taskName = taskName.trim()
                 category = category.trim()
@@ -136,7 +129,6 @@ class AddTaskActivity : AppCompatActivity() {
 
                 var pi = PendingIntent.getBroadcast(applicationContext, 111, i, 0)
                 var am: AlarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-                // am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (sec * 1000), pi)
                 val df = SimpleDateFormat("yyyy.MM.dd")
                 val howMany: Long =
                     (selectedDate.timeInMillis - System.currentTimeMillis()) + selectedTime.timeInMillis
@@ -148,6 +140,7 @@ class AddTaskActivity : AppCompatActivity() {
                 setResult(Activity.RESULT_OK, returnIntent)
                 finish()
             }
+
         }
     }
 }

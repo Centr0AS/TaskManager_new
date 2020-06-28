@@ -1,5 +1,7 @@
 package com.vlad.taskmanager
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -9,6 +11,8 @@ import kotlinx.android.synthetic.main.activity_task_detail.textView_Date
 import kotlinx.android.synthetic.main.layout_list_item.*
 import kotlinx.android.synthetic.main.layout_list_item.task_name
 
+lateinit var oldName: String
+
 class TaskDetail : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,6 +20,7 @@ class TaskDetail : AppCompatActivity() {
         setContentView(R.layout.activity_task_detail)
 
         val qtask = intent.getSerializableExtra("name") as Task
+        oldName = qtask.name
 
         task_name.text = qtask.name
         textView_category.text = qtask.category
@@ -37,6 +42,36 @@ class TaskDetail : AppCompatActivity() {
         exit_Button.setOnClickListener {
             finish()
         }
-        //TODO: Красиво оформить активити для подробной информации.
+
+        edit_button.setOnClickListener {
+            val myIntent = Intent(this, AddTaskActivity::class.java)
+            myIntent.putExtra("currentTask", qtask)
+            startActivityForResult(myIntent, 13)
+        }
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (data != null) {
+            if (resultCode == Activity.RESULT_OK) {
+                val returnedTask: Task = data.getSerializableExtra("return_task") as Task
+                task_name.text = returnedTask.name
+                textView_category.text = returnedTask.category
+                textView_description.text = returnedTask.description
+                textView_Date.text = returnedTask.date
+                textView_CTime.text = returnedTask.time
+                //TODO: Изменение текущей задачи.
+                val returnIntent: Intent = Intent()
+                returnIntent.putExtra("return_task", returnedTask)
+                returnIntent.putExtra("oldName", oldName)
+
+                setResult(Activity.RESULT_OK, returnIntent)
+
+
+            }
+
+        }
+
     }
 }

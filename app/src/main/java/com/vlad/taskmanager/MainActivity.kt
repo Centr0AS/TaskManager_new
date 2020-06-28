@@ -30,6 +30,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.get
+import kotlinx.android.synthetic.main.activity_add_task.*
 
 class MainActivity : AppCompatActivity(), OnTaskClickListener {
 
@@ -389,16 +390,13 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
         if (selOption != 0)
         {
             var selTask = sortedList[position]
-            var  selectedTask1 = tasks.indexOf(selTask)
-
             intent.putExtra("name", selTask)
-            startActivity(intent)
+            startActivityForResult(intent,13)
         }
         else
         {
             intent.putExtra("name", tasks[position])
-            startActivity(intent)
-
+            startActivityForResult(intent,13)
         }
 
     }
@@ -406,7 +404,7 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (data != null) {
+        if (data != null && requestCode == 12) {
             if (resultCode == Activity.RESULT_OK) {
                 val returnedTask: Task = data.getSerializableExtra("return_task") as Task
                 tasks.add(returnedTask)
@@ -416,9 +414,36 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
                 taskAdapter.notifyDataSetChanged()
                 createJsonData()
             } else {
+                Toast.makeText(this, "Ошибка при добавлении задачи.", Toast.LENGTH_SHORT)
+            }
+        }
+
+        if (requestCode == 13)
+        {
+
+            if (data != null) {
+                Toast.makeText(this@MainActivity, "А результат реквеста то 13!.", Toast.LENGTH_LONG)
+                val editedTask: Task = data.getSerializableExtra("return_task") as Task
+                val oldName = data.getStringExtra("oldName")
+
+                //TODO: Сделать удаление(работает, пока по имени).
+                val operatedTask = tasks.indexOf(tasks.find { it.name == oldName })
+
+                tasks.removeAt(operatedTask)
+
+                tasks.add(Task(editedTask.name, editedTask.category, editedTask.description,
+                    editedTask.date, editedTask.time))
+
+                categories = makeCategoryList()
+                categorySelector.adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, categories)
+
+                taskAdapter = TaskAdapter(tasks, this )
+                taskAdapter.notifyDataSetChanged()
+                createJsonData()
 
             }
         }
+
     }
 
     private fun makeCategoryList(): ArrayList<String> {
@@ -557,7 +582,7 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
                 val financeIntent = Intent(this, FinancesActivity::class.java)
                 startActivity(financeIntent)
             }
-            "Settings" ->{
+            "Save" ->{
                 createJsonData()
 
             }
